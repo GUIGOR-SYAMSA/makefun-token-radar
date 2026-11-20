@@ -48,7 +48,7 @@ function summarizeBoard(rows, snapshot) {
   const rowSlugs = new Set(rows.map(row => row.slug));
   const watchlistCovered = (Array.isArray(snapshot.watchlist) ? snapshot.watchlist : []).filter(slug => rowSlugs.has(slug)).length;
   const preTokenCount = rows.filter(row => row.token_status === 'records no token').length;
-  return { rowCount: rows.length, watchlistCovered, totalImpliedValueUsd, medianImpliedValueUsd, topCategories, preTokenCount, generatedAt: new Date().toISOString() };
+  return { rowCount: rows.length, watchlistCovered, totalImpliedValueUsd, medianImpliedValueUsd, topCategories, preTokenCount, generatedAt: snapshot.as_of };
 }
 
 const root = fileURLToPath(new URL('.', import.meta.url));
